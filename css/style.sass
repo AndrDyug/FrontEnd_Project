@@ -23,6 +23,7 @@ header
    line-height: 24px
    position: fixed
    top: 0
+   background-color: white
    z-index: 1000
 
 .navbar 
@@ -58,7 +59,6 @@ header > *
    img
       height: 100px
       width: 100px
-      transform: scaleX(-1)
 .contact-num
    padding: 0 16px
    align-items: center
@@ -75,38 +75,86 @@ header > *
       padding: 10px
       border: 1px solid rgba(0,0,0,.1)
       border-radius: 50%
+      transition: .2s 
+   &:hover span
+      color: $highlight-color
+      border-color: $highlight-color
+      transition: .2s 
 main
    width: 100%
-   height: calc(100vh - 80px)
+   padding-top: 80px 
+
    display: flex
    position: relative
 .sidebar
-   margin-top: 80px
+   background-color: white
    height: 100%
-   width: 110px
+   width: 100px
    border-right: 1px solid rgba(0,0,0,.1)
    position: fixed
+   user-select: none
+   transition: .2s width   
+   z-index: 200
+   overflow: hidden
+   .nav-menu-item p
+      opacity: 0
+      transition: .2s ease-in
+      font-size: 24px
+      padding-left: 20px
+   &:hover .nav-menu-item p
+      opacity: 100%
+      transition: .2s ease
+   .nav-menu-item span
+      font-size: 40px 
+
+   &:hover
+      width: 200px
+      transition: .2s width 
+      z-index: 200
+   .nav-menu
+      width: 100%
+      display: flex
+      flex-direction: column
+      padding: 30px
+      .nav-menu-item
+         cursor: pointer
+         position: relative
+         display: flex
+         align-items: center
+         transition: .2s color 
+         &:hover > *
+            transition: .2s color
+            color: $highlight-color
+      
 .content 
    position: relative
    width: 100%
-   margin: 80px 425px 0 110px
+   margin: 0 100px 
+
+   
 .pizza-menu > :nth-child(2n)
       background-color: rgba(0,0,0,.04)
 .cart
    width: 425px
    height: 100%
-   margin-top: 80px
+
    border-left: 1px solid rgba(0,0,0,.1)
    position: fixed
-   right: 0
+   z-index: 100
+   background-color: white
+   right: -325px
 .carousel 
-   widows: 1390px
    height: 596px
-   background-color: rgba(0, 0, 0, .1)
    overflow: hidden  
    img 
       width: 100%
-      
+.filter
+   background-color: rgba(1, 1, 1, 0)
+   user-select: none
+   height: 100%
+   width: 100%
+   position: absolute
+   z-index: 100
 .trends
    width: 100%
    margin: 60px 0
@@ -126,6 +174,7 @@ main
       font-size: 24px
 .pizza-list
    display: flex
+   align-items: center
    justify-content: space-between
    margin-top: 20px
    width: 100%
@@ -134,25 +183,32 @@ main
       width: 100%
       max-width: 280px
       padding: 30px
+      flex-basis: 20%
       background-color: white
       display: flex
       flex-direction: column
       align-items: center
       transition: box-shadow .3s
       cursor: pointer
+      border-radius: 5px
       &:hover
          box-shadow: 0 0 8px 10px rgba(0, 0, 0, .04)
          transition: box-shadow .3s
       .buy-item 
          margin-top: 10px
          display: flex
+         flex-direction: column
+         justify-content: center
          align-items: center
+         padding: 10px
+         width: 100%
+         border-bottom: 1px solid rgba(0, 0, 0, .5)
          .price
             display: flex
             justify-content: center
             align-items: center
-            padding-left: 30px
-            font-size: 18px
+            font-size: 24px
+            margin-top: 10px
          .btn-add
             width: 92px
             height: 40px
@@ -162,7 +218,7 @@ main
             align-items: center
             justify-content: center
             color: white
-            border-radius: 20px
+            border-radius: 5px
       .pizza-name
          font-size: 24px
          margin: 10px 0
@@ -171,17 +227,18 @@ main
          width: 220px
          border-radius: 5px
 footer
+   width: 100%
+   .copyright
+      height: 80px
+      width: 100%
+      background-color: rgba(0, 0, 0, .9)
+.contacts-wrapper 
    display: flex
-   flex-direction: column
+   padding: 80px 60px
    width: 100%
    .map
       width: 50%
       height: 100%
-.wrapper 
-   display: flex
-   padding: 80px 60px
-   height: 415px
-   width: 100%
 
 .form-wrapper
    width: 50%
@@ -222,10 +279,7 @@ footer
       text-transform: uppercase
       letter-spacing: 0.5px
       transition: background-color .2s
-.copyright
-   height: 80px
-   width: 100%
-   background-color: rgba(0, 0, 0, .9)
+
 #contacts
       text-align: center
       margin-top: 60px 
